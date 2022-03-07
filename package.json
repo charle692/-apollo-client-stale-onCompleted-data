@@ -1,0 +1,44 @@
+{
+  "name": "react-testing-library-playground",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@apollo/client": "3.5.10",
+    "@testing-library/jest-dom": "5.16.2",
+    "@testing-library/react": "11.2.2",
+    "@testing-library/user-event": "13.5.0",
+    "@types/apollo-upload-client": "17.0.0",
+    "@types/jest": "26.0.16",
+    "apollo-upload-client": "17.0.0",
+    "graphql": "16.3.0",
+    "jest": "26.6.3",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-scripts": "3.3.0",
+    "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-runtime": "^7.16.10",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.15.0",
+    "@babel/register": "^7.16.9"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "typescript": "3.7.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
