@@ -1,7 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
 
 const QUERY = gql`
   query user {
@@ -23,8 +22,11 @@ const MUTATION = gql`
   }
 `;
 
-const TestComponent = () => {
-  const [renderSuccess, setRenderSuccess] = useState(false);
+interface Props {
+  onMutationCompleted: (data: any) => void;
+}
+
+const TestComponent: FC<Props> = ({ onMutationCompleted }) => {
   const { data, loading } = useQuery(QUERY);
 
   console.log({ queryData: JSON.stringify(data), loading });
@@ -32,7 +34,9 @@ const TestComponent = () => {
   const [callMutation] = useMutation(MUTATION, {
     onCompleted: () => {
       console.log({ dataInOnCompleted: JSON.stringify(data) });
-      setRenderSuccess(!data.user.isNew);
+
+      // will be called with stale data
+      onMutationCompleted(data);
     }
   });
 
@@ -45,7 +49,6 @@ const TestComponent = () => {
     <div className="App">
       <h1>State data in mutation onCompleted reproduction</h1>
       <button onClick={handleClick}>Call mutation</button>
-      {renderSuccess && <div>Success!</div>}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { TestComponent, MUTATION, QUERY } from "./TestComponent";
 import userEvent from "@testing-library/user-event";
 
 const USER_ID = "1";
+let mockOnMutationCompleted: jest.Mock;
 
 describe("TestComponent", () => {
   const queryMock = {
@@ -44,9 +45,11 @@ describe("TestComponent", () => {
   }
 
   const renderScreen = () => {
+    mockOnMutationCompleted = jest.fn();
+
     render(
       <MockedProvider mocks={[queryMock, mutationMock]}>
-        <TestComponent />
+        <TestComponent onMutationCompleted={mockOnMutationCompleted} />
       </MockedProvider>
     );
   };
@@ -62,6 +65,10 @@ describe("TestComponent", () => {
     // wait for mutation to finish
     await wait();
 
-    expect(screen.getByTestId("Success!")).toBeInTheDocument();
+    expect(mockOnMutationCompleted).toHaveBeenCalledWith({ user: {
+      id: USER_ID,
+      isNew: false,
+      __typename: "User"}
+    });
   });
 });

@@ -6,7 +6,7 @@ It contains old data representing the initial load rather than the result from t
 ## Instructions
 
 1. Run `npm install`
-2. Run `npm test` for the reproduction, I've added console.log statements to illustrate the problem
+2. Run `npm test` for the reproduction, I've added console.log statements to illustrate the problem as well as an assertion that passes in version: `3.4.17`
 
 ## Notes
 
